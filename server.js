@@ -11,7 +11,7 @@ server.use(express.json());
 
 //rotte
 server.get('/', (req, res) => {
-    res.send('Ciao');
+    res.send('Ciao, dovresti farmi una richiesta JSON');
 });
 server.use('/events', eventsRouter);
 

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1700219475968",
+    "title": "Battuta di caccia",
+    "description": "si va a cacciare i cinghiali",
+    "date": "2023-12-31",
+    "maxSeats": 60
+  },
+  {
+    "id": "1700219764132",
+    "title": "Evento di pesca",
+    "description": "si va a pescare",
+    "date": "2023-12-31",
+    "maxSeats": 50
+  }
+]

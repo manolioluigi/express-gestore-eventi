@@ -11,9 +11,21 @@ class Event {
     }
 
     //recupero di tutti gli eventi
-    static getAll() {
-        const eventsData = this.readEventsFile();
-        return eventsData || [];
+    static getAll(filters = {}) {
+        let events = this.readEventsFile() || [];
+
+        if (Object.keys(filters).length > 0) {
+            events = events.filter(event => {
+                for (const key in filters) {
+                    if (event[key] !== filters[key]) {
+                        return false;
+                    }
+                }
+                return true;
+            });
+        }
+
+        return events;
     }
 
     //recupero evento per ID
