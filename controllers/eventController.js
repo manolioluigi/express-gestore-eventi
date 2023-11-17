@@ -1,16 +1,36 @@
+const Event = require('../models/event');
+
 function index(req, res) {
-    // TODO: Implementa la logica per recuperare tutti gli eventi
-    res.json({ message: 'logica per recuperare tutti gli eventi' });
+    const events = Event.getAll();
+    res.json(events);
 }
 
 function store(req, res) {
-    // TODO: Implementa la logica per salvare un nuovo evento
-    res.json({ message: 'logica per salvare un nuovo evento' });
+    const { title, description, date, maxSeats } = req.body;
+    const newEvent = new Event(null, title, description, date, maxSeats);
+    const savedEvent = Event.save(newEvent);
+    res.json(savedEvent);
 }
 
 function update(req, res) {
-    // TODO: Implementa la logica per aggiornare un evento
-    res.json({ message: 'logica per aggiornare un evento' });
+    const eventId = req.params.event;
+    const { title, description, date, maxSeats } = req.body;
+
+    const existingEvent = Event.getById(eventId);
+    if (!existingEvent) {
+        return res.status(404).json({ error: 'Evento non trovato' });
+    }
+
+    const updatedEvent = new Event(
+        eventId,
+        title || existingEvent.title,
+        description || existingEvent.description,
+        date || existingEvent.date,
+        maxSeats || existingEvent.maxSeats
+    );
+
+    const savedEvent = Event.save(updatedEvent);
+    res.json(savedEvent);
 }
 
 module.exports = {
