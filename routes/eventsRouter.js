@@ -1,9 +1,10 @@
 const express = require('express');
-const eventsController = require('../controllers/eventController');
+const eventController = require('../controllers/eventController');
 const router = express.Router();
 
-router.get('/', eventsController.index);
-router.post('/', eventsController.store);
-router.put('/:event', eventsController.update);
+router.get('/', eventController.index);
+router.post('/', eventController.store);
+router.put('/:event', eventController.update);
+//router.get('/simulate-error', eventController.simulateServerError);
 
 module.exports = router;

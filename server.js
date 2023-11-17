@@ -15,6 +15,12 @@ server.get('/', (req, res) => {
 });
 server.use('/events', eventsRouter);
 
+//errori
+const notFoundHandler = require('./middlewares/notFoundHandler');
+server.use(notFoundHandler);
+const errorHandler = require('./middlewares/errorHandler');
+server.use(errorHandler);
+
 //avvio
 server.listen(PORT, () => {
     console.log(`Server in ascolto all'indirizzo: http://localhost:${PORT}`);

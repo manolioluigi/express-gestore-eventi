@@ -42,8 +42,15 @@ function update(req, res) {
     res.json(savedEvent);
 }
 
+/*
+function simulateServerError(req, res) {
+    throw new Error('Errore interno del server');
+}
+*/
+
 module.exports = {
     index,
     store,
     update,
+    //simulateServerError
 };
